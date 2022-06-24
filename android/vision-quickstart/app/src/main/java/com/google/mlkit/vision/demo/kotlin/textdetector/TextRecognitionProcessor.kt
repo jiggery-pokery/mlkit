@@ -40,6 +40,7 @@ class TextRecognitionProcessor(private val context: Context, textRecognizerOptio
   }
 
   override fun detectInImage(image: InputImage): Task<Text> {
+
     return textRecognizer.process(image)
   }
 
@@ -60,8 +61,28 @@ class TextRecognitionProcessor(private val context: Context, textRecognizerOptio
       if (text != null) {
         Log.v(
           MANUAL_TESTING_LOG,
-          "Detected text has : " + text.textBlocks.size + " blocks"
+          "xxx: \n" + text.text + "\n\n"
         )
+
+        /*
+        for (i in text.textBlocks.indices) {
+          Log.v(
+            MANUAL_TESTING_LOG,
+            String.format("xxx: Text block %d", i)
+          )
+          val lines = text.textBlocks[i].lines
+          for (j in lines.indices) {
+            Log.v(
+              MANUAL_TESTING_LOG,
+              "xxx: " + lines[j].text
+            )
+          }
+        }
+
+         */
+
+
+        /*
         for (i in text.textBlocks.indices) {
           val lines = text.textBlocks[i].lines
           Log.v(
@@ -106,6 +127,8 @@ class TextRecognitionProcessor(private val context: Context, textRecognizerOptio
             }
           }
         }
+
+         */
       }
     }
   }
